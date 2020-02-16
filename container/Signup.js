@@ -36,7 +36,7 @@ export default function Signup() {
       return;
   };
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="username"
@@ -80,7 +80,13 @@ export default function Signup() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: Constants.statusBarHeight },
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   input: {
     color: "white",
     fontSize: 24,

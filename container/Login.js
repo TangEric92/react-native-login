@@ -42,7 +42,7 @@ export default function Login() {
         placeholder="Email"
         onChangeText={handleMail}
       />
-      {!!emailError && <Text style={{ color: "red" }}>{emailError}</Text>}
+      {!!emailError && <Text style={{ color: "yellow" }}>{emailError}</Text>}
 
       <TextInput
         style={styles.input}
@@ -50,7 +50,9 @@ export default function Login() {
         secureTextEntry
         onChangeText={handlePassword}
       />
-      {!!passwordError && <Text style={{ color: "red" }}>{passwordError}</Text>}
+      {!!passwordError && (
+        <Text style={{ color: "yellow" }}>{passwordError}</Text>
+      )}
 
       <Text
         style={styles.link}
@@ -70,7 +72,13 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: Constants.statusBarHeight },
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   input: {
     color: "white",
     fontSize: 24,
