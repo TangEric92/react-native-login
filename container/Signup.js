@@ -34,7 +34,22 @@ export default function Signup() {
       checkPassword !== password
     )
       return;
+
+    axios
+      .post("https://happy-vegan-api.herokuapp.com/api/user/sign_up", {
+        username: username,
+        password: password,
+        email: email
+      })
+      .then(response => {
+        alert(response.data.token);
+        history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -43,7 +58,9 @@ export default function Signup() {
         type="text"
         onChangeText={e => setUsername(e)}
       />
-      {!!usernameError && <Text style={{ color: "red" }}>{usernameError}</Text>}
+      {!!usernameError && (
+        <Text style={{ color: "yellow" }}>{usernameError}</Text>
+      )}
       <TextInput
         style={styles.input}
         placeholder="email"
