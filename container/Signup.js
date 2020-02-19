@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from "react-native";
+
 import Constants from "expo-constants";
+import { useNavigation } from "@react-navigation/core";
 
 import checkEmpty from "../function/checkEmpty";
+import getAccount from "../function/getAccount";
+
+import axios from "axios";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -20,6 +26,19 @@ export default function Signup() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [checkPasswordError, setCheckPasswordError] = useState("");
+
+  const navigation = useNavigation();
+
+  const getAccount = async () => {
+    const localAccount = await AsyncStorage.getItem("account");
+    if (localAccount) {
+      setTimeout(() => navigation.replace("Home"));
+    }
+  };
+
+  useEffect(() => {
+    getAccount();
+  }, []);
 
   const postSignUp = () => {
     checkEmpty("username", username, setUsernameError);
@@ -42,8 +61,10 @@ export default function Signup() {
         email: email
       })
       .then(response => {
-        alert(response.data.token);
-        history.push("/");
+        AsyncStorage.setItem("account", JSON.stringify(response.data));
+        navigation.replace("Home");
+
+        console.log(response.data);
       })
       .catch(err => {
         console.log(err);

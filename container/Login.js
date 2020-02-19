@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
@@ -10,7 +10,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from "react-native";
 
 export default function Login() {
@@ -28,11 +29,34 @@ export default function Login() {
   const handlePassword = password => {
     setPassword(password);
   };
+  const getAccount = async () => {
+    const localAccount = await AsyncStorage.getItem("account");
+    if (localAccount) {
+      setTimeout(() => navigation.replace("Home"));
+    }
+  };
+  useEffect(() => {
+    getAccount();
+  }, []);
 
   const handleSubmit = () => {
     checkEmpty("email", email, setEmailError);
     checkEmpty("password", password, setPasswordError);
     if (!email || !password) return;
+
+    axios
+      .post("https://happy-vegan-api.herokuapp.com/api/user/log_in", {
+        password: password,
+        email: email
+      })
+      .then(response => {
+        AsyncStorage.setItem("account", JSON.stringify(response.data));
+        navigation.replace("Home");
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
