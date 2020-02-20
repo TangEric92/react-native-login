@@ -52,7 +52,7 @@ export default function Login() {
       .then(response => {
         AsyncStorage.setItem("account", JSON.stringify(response.data));
         navigation.replace("Home");
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch(err => {
         console.log(err);

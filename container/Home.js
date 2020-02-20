@@ -26,8 +26,14 @@ export default function Home() {
 
   if (account) {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Bonjour {account.account.username}</Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("Profil")}
+        >
+          Voir mon profil
+        </Text>
         <TouchableOpacity
           onPress={() => {
             deleteAccount();

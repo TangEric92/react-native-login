@@ -12,7 +12,7 @@ import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/core";
 
 import checkEmpty from "../function/checkEmpty";
-import getAccount from "../function/getAccount";
+//import getAccount from "../function/getAccount";
 
 import axios from "axios";
 
