@@ -43,13 +43,15 @@ export default function Login() {
     checkEmpty("email", email, setEmailError);
     checkEmpty("password", password, setPasswordError);
     if (!email || !password) return;
-
+    console.log(1);
     axios
       .post("https://happy-vegan-api.herokuapp.com/api/user/log_in", {
         password: password,
         email: email
       })
       .then(response => {
+        console.log(response.data);
+
         AsyncStorage.setItem("account", JSON.stringify(response.data));
         navigation.replace("Home");
         //console.log(response.data);

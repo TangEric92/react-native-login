@@ -34,6 +34,24 @@ export default function Home() {
         >
           Voir mon profil
         </Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("Photo")}
+        >
+          Photo
+        </Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("PhotoPicker")}
+        >
+          PhotoPicker
+        </Text>
+        <Text
+          style={styles.button}
+          onPress={() => navigation.navigate("CameraApp")}
+        >
+          PhotoPicker
+        </Text>
         <TouchableOpacity
           onPress={() => {
             deleteAccount();

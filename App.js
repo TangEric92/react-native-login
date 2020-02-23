@@ -3,7 +3,16 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, Login, Signup, ForgetPassword, Profil } from "./container";
+import {
+  Home,
+  Login,
+  Signup,
+  ForgetPassword,
+  Profil,
+  Photo,
+  PhotoPicker,
+  CameraApp
+} from "./container";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +34,9 @@ export default function App() {
 
         <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
         <Stack.Screen name="Connected" component={ForgetPassword} />
+        <Stack.Screen name="Photo" component={Photo} />
+        <Stack.Screen name="PhotoPicker" component={PhotoPicker} />
+        <Stack.Screen name="CameraApp" component={CameraApp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
