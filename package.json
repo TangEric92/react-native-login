@@ -13,7 +13,7 @@
     "@react-navigation/core": "^5.0.0-alpha.43",
     "@react-navigation/native": "^5.0.0-alpha.35",
     "@react-navigation/stack": "^5.0.0-alpha.71",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "expo": "~36.0.0",
     "expo-camera": "~8.0.0",
     "expo-image-picker": "~8.0.1",
